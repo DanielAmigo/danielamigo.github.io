@@ -1,0 +1,21 @@
+global:
+  site_title: Daniel Amigo website
+  site_description: Daniel Amigo personal page
+langs:
+  english: English
+  spanish: Spanish
+  en: EN
+  es: ES
+navbar:
+  about: About me
+  contact: Contact
+  blog: Blog
+
+# Work experiences
+author_work_experiences:
+  - company_name: Next Limit
+    designation: Software Engineer
+    description: Working on AnyverseAI project
+  - company_name: Ilion Animation Studios
+    designation: Technical Director CFX, FX and Crowds
+    description: Worked on several departments developing tools to improve artists pipeline

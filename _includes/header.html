@@ -1,0 +1,146 @@
+
+<header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}">
+    <div class="container">
+      {% if page.title != "about" -%}
+      <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl | prepend: site.url }}/">
+          {%- if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}  {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif -%}
+      </a>
+      {%- elsif site.enable_navbar_social -%}
+      <!-- Social Icons -->
+      <div class="navbar-brand social">
+        {% include social.html %}
+      </div>
+      {% endif %}
+
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+
+          {% if site.lang == "en" %}
+          {% capture langAux %}{{ site.baseurl_root }}{% endcapture %}
+          {% elsif site.lang == "es" %}
+          {% capture langAux %}{{ site.baseurl_root }}/es{% endcapture %}
+          {% endif %}
+
+          <!-- About -->
+          <li class="nav-item {% if page.title == 'about' %}active{% endif %}">
+            {% if site.lang == "en" %}
+            <a class="nav-link" href="{{ langAux }}/" title="About me">about me
+            {% elsif site.lang == "es" %}
+            <a class="nav-link" href="{{ langAux }}/" title="Sobre mí">sobre mí
+            {% endif %}
+              {%- if page.title == "blog" -%}
+              <span class="sr-only">(current)</span>
+              {%- endif -%}
+            </a>
+          </li>
+
+          <!-- Blog -->
+          <li class="nav-item {% if page.url contains 'blog' %}active{% endif %}">
+            {% if site.lang == "en" %}
+            <a class="nav-link" href="{{ langAux }}/blog/" title="Blog">blog
+            {% elsif site.lang == "es" %}
+            <a class="nav-link" href="{{ langAux }}/blog/" title="Blog">blog
+            {% endif %}
+              {%- if page.title == "blog" -%}
+              <span class="sr-only">(current)</span>
+              {%- endif -%}
+            </a>
+          </li>
+
+          <!-- Projects -->
+          <li class="nav-item {% if page.url contains 'projects' %}active{% endif %}">
+            {% if site.lang == "en" %}
+            <a class="nav-link" href="{{ langAux }}/projects/" title="Projects">projects
+            {% elsif site.lang == "es" %}
+            <a class="nav-link" href="{{ langAux }}/projects/" title="Proyectos">proyectos
+            {% endif %}
+              {%- if page.title == "blog" -%}
+              <span class="sr-only">(current)</span>
+              {%- endif -%}
+            </a>
+          </li>
+
+          <!-- Publications -->
+          <li class="nav-item {% if page.url contains 'publications' %}active{% endif %}">
+            {% if site.lang == "en" %}
+            <a class="nav-link" href="{{ langAux }}/publications/" title="Publications">publications
+            {% elsif site.lang == "es" %}
+            <a class="nav-link" href="{{ langAux }}/publications/" title="Publicaciones">publicaciones
+            {% endif %}
+              {%- if page.title == "publications" -%}
+              <span class="sr-only">(current)</span>
+              {%- endif -%}
+            </a>
+          </li>
+
+          <!-- Teaching -->
+          <li class="nav-item {% if page.url contains 'teaching' %}active{% endif %}">
+            {% if site.lang == "en" %}
+            <a class="nav-link" href="{{ langAux }}/teaching/" title="Teaching">teaching
+            {% elsif site.lang == "es" %}
+            <a class="nav-link" href="{{ langAux }}/teaching/" title="Docencia">docencia
+            {% endif %}
+              {%- if page.title == "teaching" -%}
+              <span class="sr-only">(current)</span>
+              {%- endif -%}
+            </a>
+          </li>
+
+          <!-- CV -->
+          <li class="nav-item">
+            {% if site.lang == "en" %}
+              <a class="nav-link" href="{{ site.baseurl_root }}/assets/pdf/CV/cvn_Daniel_Amigo_English.pdf" title="CV English">CV</a>
+            {% elsif site.lang == "es" %}
+              <a class="nav-link" href="{{ site.baseurl_root }}/assets/pdf/CV/cvn_Daniel_Amigo_Spanish.pdf" title="CV Español">CV</a>
+            {% endif %}
+          </li>
+          
+          <!-- Toggle language -->
+          <!--
+          <li class="nav-item">
+            {% if site.lang == "en" %}
+              {% capture link2 %}{{ site.baseurl_root }}/es{{ page.url }}{% endcapture %}
+              <a href="{{ link2 }}" class="lang-switcher english" title="English Website"><img src="/assets/img/en.webp"/></a>
+            {% elsif site.lang == "es" %}
+              {% capture link1 %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+              <a href="{{ link1 }}" class="lang-switcher spanish" title="Website en español"><img src="/assets/img/es.webp"/></a>
+            {% endif %}
+          </li>
+          -->
+
+          <!-- Dropdown language selector -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-language"></i></a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              {% capture linkToSpanish %}{{ site.baseurl_root }}/es{{ page.url }}{% endcapture %}
+              <a href="{{ linkToSpanish }}" class="lang-switcher spanish" title="English Website">Spanish</a>
+              <div class="dropdown-divider"></div>
+              {% capture linkToEnglish %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+              <a href="{{ linkToEnglish }}" class="lang-switcher english" title="Website en español">English</a>
+            </div>
+          </li>
+
+          <!-- Toogle theme mode -->
+          {%- if site.enable_darkmode %}
+          <div class = "toggle-container">
+            <a id = "light-toggle">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </a>
+          </div>
+          {%- endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
