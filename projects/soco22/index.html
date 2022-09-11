@@ -8,10 +8,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Daniel  Amigo | blog</title>
+    <title>Daniel  Amigo | UAV Simulation for Object Detection and 3D Reconstruction Fusing 2D LiDAR and Camera</title>
     <meta name="author" content="Daniel  Amigo" />
-    <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-" />
+    <meta name="description" content="Authors: Daniel Amigo, Jesús García, José Manuel Molina, and Jorge Lizcano" />
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
 
 
@@ -31,7 +30,7 @@
 
 <link rel="shortcut icon" href="/assets/icons/dark.png"/> <!-- favicon.io -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="https://danielamigo.github.io/blog/">
+<link rel="canonical" href="https://danielamigo.github.io/projects/soco22/">
 
 <!-- Dark Mode -->
 
@@ -70,21 +69,21 @@
           <li class="nav-item ">
             
             <a class="nav-link" href="/" title="About me">about me
-            <span class="sr-only">(current)</span></a>
+            </a>
           </li>
 
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             
             <a class="nav-link" href="/blog/" title="Blog">blog
-            <span class="sr-only">(current)</span></a>
+            </a>
           </li>
 
           <!-- Projects -->
-          <li class="nav-item ">
+          <li class="nav-item active">
             
             <a class="nav-link" href="/projects/" title="Projects">projects
-            <span class="sr-only">(current)</span></a>
+            </a>
           </li>
 
           <!-- Publications -->
@@ -113,7 +112,7 @@
           <li class="nav-item">
             
               
-              <a href="/es/blog/index.html" class="lang-switcher english" title="English Website"><img src="/assets/img/en.webp"/></a>
+              <a href="/es/projects/soco22/" class="lang-switcher english" title="English Website"><img src="/assets/img/en.webp"/></a>
             
           </li>
           -->
@@ -123,16 +122,16 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-language"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               
-              <a href="/es/blog/index.html" class="lang-switcher spanish" title="English Website">Spanish</a>
+              <a href="/es/projects/soco22/" class="lang-switcher spanish" title="English Website">Spanish</a>
               <div class="dropdown-divider"></div>
               
-              <a href="/blog/index.html" class="lang-switcher english" title="Website en español">English</a>
+              <a href="/projects/soco22/" class="lang-switcher english" title="Website en español">English</a>
             </div>
           </li>
 
           <!-- Toogle theme mode -->
-          <div class = "toggle-container">
-            <a id = "light-toggle">
+          <div class="toggle-container">
+            <a id="light-toggle">
               <i class="fas fa-moon"></i>
               <i class="fas fa-sun"></i>
             </a>
@@ -145,18 +144,65 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <div class="post">
+      <!-- page.html -->
+<div class="post">
 
-  <div class="header-bar">
-    <h1>blog</h1>
-    <h2>blog description</h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">UAV Simulation for Object Detection and 3D Reconstruction Fusing 2D LiDAR and Camera</h1>
+    <p class="post-description">Authors: Daniel Amigo, Jesús García, José Manuel Molina, and Jorge Lizcano</p>
+  </header>
 
-  <ul class="post-list">
-    
-  </ul>
+  <article>
+    <!-- Add additional resources for video comparisons -->
+<script type="text/javascript" src="../../assets/projects/soco22/js/video_comparison.js"></script>
 
-  
+<link rel="stylesheet" href="../../assets/projects/soco22/css/video_comparison.css">
+
+<!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+
+<h2 id="abstract">Abstract</h2>
+<p>Currently it is hard to develop UAV in civil environments, being simulation the best option to develop complex UAV missions with AI. To carry out useful AI training in simulation for real-world use, it is best to do it over a similar environment as the one a real UAV will work, with realistic objects in the scene of interest (buildings, vehicles, structures, etc.). This work aims to detect, reconstruct, and extract metadata from those objects. A UAV mission was developed, which automatically detects all objects in a given area using both simulated camera and 2D LiDAR, and then performs a detailed scan of each object. Later, a reconstruct process will create a 3D model for each one of those objects, along with a geo-referenced information layer that contains the object information. If applied on reality, this mission ease bringing real content to a digital twin, thus improving, and extending the simulation capabilities. Results show great potential even with the current budget specification sensors. Additional post-processing steps could reduce the resulting artefacts in the export of 3D objects. Code, dataset, and details are available on the project page: <a href="https://danielamigo.github.io/projects/soco22/">https://danielamigo.github.io/projects/soco22/</a></p>
+
+<h2 id="paper">Paper</h2>
+<p><a href="../../assets/pdf/proceedings/amigo_2022_uav_simulation_for_object_detection_and_3d_reconstruction_fusing_2d_lidar_and.pdf">Preprint access</a></p>
+
+<h2 id="results-comparison">Results comparison</h2>
+<p>Sculpture</p>
+<div class="video-compare-container">
+  <video class="video" id="sculpture" loop="" playsinline="" autoplay="" muted="" src="../../assets/projects/soco22/video/Sculpture.mp4" onplay="resizeAndPlay(this)"></video>
+  <canvas height="0" class="videoMerge" id="sculptureMerge"></canvas>
+</div>
+<p>Building</p>
+<div class="video-compare-container">
+  <video class="video" id="building" loop="" playsinline="" autoplay="" muted="" src="../../assets/projects/soco22/video/Building.mp4" onplay="resizeAndPlay(this)"></video>
+  <canvas height="0" class="videoMerge" id="buildingMerge"></canvas>
+</div>
+
+<h2 id="map-results">Map results</h2>
+<div id="map"></div>
+<link rel="stylesheet" href="../../assets/projects/soco22/css/leaflet.css">
+
+<script type="text/javascript" src="../../assets/projects/soco22/js/leaflet.js"></script>
+
+<h2 id="citation">Citation</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{amigo_uav_2022,
+    address    = {Salamanca, Spain},
+    title      = {UAV Simulation for Object Detection and 3D Reconstruction Fusing 2D LiDAR and Camera},
+    language   = {en},
+    booktitle  = {17th International Conference on Soft Computing Models in Industrial and Environmental Applications (SOCO 2022)},
+    publisher  = {Springer International Publishing},
+    author     = {Amigo, Daniel and García, Jesús and Molina, José Manuel and Lizcano, Jorge},
+    month      = sep,
+    year       = {2022},
+}
+</code></pre></div></div>
+
+  </article>
 
 </div>
 
@@ -165,7 +211,7 @@
     <!-- Footer -->
 <footer class="fixed-bottom">
   <div class="container mt-0">
-    &copy; Copyright 2022 Daniel  Amigo. Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+    © Copyright 2022 Daniel  Amigo. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme.
 
   </div>
 </footer>
